@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: web_service_v2
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/web_service
+    username: root
+    password: kim20823097@@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+
+jwt:
+  secret: "9f3a8c1d7b6e4a2f5d91c0b8e4f7a2d3c6b5e8a9f1d2c4b7e0a6d3c9f5b8e1"
+  access-token-expiration-ms: 1800000
+  refresh-token-expiration-ms: 1209600000
+
+
