@@ -6,9 +6,9 @@ spring:
     name: web_service_v2
 
   datasource:
-    url: jdbc:mysql://localhost:3306/web_service
+    url: 
     username: root
-    password: kim20823097@@
+    password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
