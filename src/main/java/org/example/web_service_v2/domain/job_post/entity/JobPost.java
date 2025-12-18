@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "job_post")
-@Getter
+@Getter@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -51,4 +51,6 @@ public class JobPost {
     // JobPost 1:1 JobPostDetail
     @OneToOne(mappedBy = "jobPost", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private JobPostDetail jobPostDetail;
+
+
 }

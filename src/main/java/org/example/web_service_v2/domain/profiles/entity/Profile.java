@@ -14,7 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "profiles")
-@Getter
+@Getter@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -24,22 +24,32 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // field: 분야 / 직군
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "field_id")
     private Field field;
 
+    // === 비즈니스 로직 (정민님 코드에서 가져옴) ===
+    // 유저 1:1
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
 
+    // 한줄 소개
     @Column(length = 150)
     private String headline;
 
-    @Column(name = "portfolio_url", length = 255)
-    private String portfolioUrl;
+    // 링크
+    @OneToMany(
+            mappedBy = "profile",
+            cascade = CascadeType.ALL
+    )
+    @Builder.Default
+    private List<ProfilePortfolioLink> portfolioLinks = new ArrayList<>();
 
+    // 유저 이미지
     @Column(length = 255)
-    private String userimage;
+    private String userImage;
 
     // === 연관관계 ===
 
@@ -49,12 +59,12 @@ public class Profile {
     private List<JobPost> jobPosts = new ArrayList<>();
 
     // Profile 1:N Follow (내가 팔로우한 사람들)
-    @OneToMany(mappedBy = "follower", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "follower", cascade = CascadeType.ALL)
     @Builder.Default
     private List<Follow> followings = new ArrayList<>();
 
     // Profile 1:N Follow (나를 팔로우한 사람들)
-    @OneToMany(mappedBy = "following", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "following", cascade = CascadeType.ALL)
     @Builder.Default
     private List<Follow> followers = new ArrayList<>();
 
@@ -73,15 +83,14 @@ public class Profile {
     @Builder.Default
     private List<ChatMessage> sentMessages = new ArrayList<>();
 
-    // === 비즈니스 로직 (정민님 코드에서 가져옴) ===
-
-    public void updateProfile(String headline, String portfolioUrl, String userimage) {
-        this.headline = headline;
-        this.portfolioUrl = portfolioUrl;
-        this.userimage = userimage;
-    }
-
     public void updateField(Field field) {
         this.field = field;
+    }
+
+    public void attachUser(User user){
+        this.user = user;
+        if (user != null && user.getProfile() != this){
+            user.attachProfile(this);
+        }
     }
 }

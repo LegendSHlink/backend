@@ -1,6 +1,8 @@
 package org.example.web_service_v2.domain.users.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.web_service_v2.domain.profiles.repositories.ProfileRepository;
+import org.example.web_service_v2.domain.profiles.entity.Profile;
 import org.example.web_service_v2.domain.users.dto.signin.SigninRequest;
 import org.example.web_service_v2.domain.users.dto.signin.SigninResponse;
 import org.example.web_service_v2.domain.users.dto.signup.SignupRequest;
@@ -24,6 +26,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
     private final JwtProperties jwtProperties;
+    private final ProfileRepository profileRepository;
 
     @Transactional
     public SigninResponse login(SigninRequest request) {
@@ -51,6 +54,13 @@ public class AuthService {
                 .name(request.getName())
                 .build();
 
+        Profile profile = Profile.builder()
+                .headline(null)
+                .field(null)
+                .userImage(null)
+                .build();
+
+        user.attachProfile(profile);
         userRepository.save(user);
     }
 

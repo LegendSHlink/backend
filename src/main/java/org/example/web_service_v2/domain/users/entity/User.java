@@ -14,7 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-@Getter
+@Getter@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -25,13 +25,13 @@ public class User {
     private Long id;
 
     @Email
-    @Column(nullable = false, unique = true, length = 255)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password_hash", nullable = false, length = 255)
+    @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false)
     private String name;
 
     @CreationTimestamp
@@ -74,7 +74,19 @@ public class User {
     }
 
     // === 비즈니스 로직 ===
-    
+
+    public void attachProfile(Profile profile){
+        this.profile = profile;
+        if (profile != null && profile.getUser() != this){
+            profile.attachUser(this);
+        }
+    }
+
+    public void addArticle(Article article){
+        articles.add(article);
+        article.setUser(this);
+    }
+
     public void softDelete() {
         this.deletedAt = LocalDateTime.now();
     }

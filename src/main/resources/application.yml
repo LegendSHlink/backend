@@ -3,12 +3,12 @@ server:
 
 spring:
   application:
-    name: shlink
+    name: web_service_v2
 
   datasource:
-    url: jdbc:mysql://localhost:3306/shlink
+    url: jdbc:mysql://localhost:3306/web_service
     username: root
-    password: leksis6737!
+    password: kim20823097@@
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:

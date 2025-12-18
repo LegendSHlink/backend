@@ -26,13 +26,13 @@ public class Follow {
     @JoinColumn(name = "following_id", nullable = false)
     private Profile following; // 팔로우 받는 사람
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "follow_status", nullable = false)
-    private FollowStatus followStatus;
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "follow_status", nullable = false)
+//    private FollowStatus followStatus;
 
     // === 비즈니스 로직 ===
 
-    public void updateStatus(FollowStatus status) {
-        this.followStatus = status;
-    }
+//    public void updateStatus(FollowStatus status) {
+//        this.followStatus = status;
+//    }
 }

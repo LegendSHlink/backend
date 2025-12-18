@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "article")
-@Getter
+@Getter@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -39,5 +39,12 @@ public class Article {
 
     public void updateContext(String context) {
         this.context = context;
+    }
+
+    public static Article to(User user, String context){
+        return Article.builder()
+                .user(user)
+                .context(context)
+                .build();
     }
 }
