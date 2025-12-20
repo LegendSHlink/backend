@@ -26,10 +26,19 @@ public enum ErrorCode {
 
     // 403 FORBIDDEN
     FORBIDDEN(HttpStatus.FORBIDDEN, "FORBIDDEN", "권한이 없습니다."),
+    CHAT_SELF_ROOM_NOT_ALLOWED(HttpStatus.BAD_REQUEST, "CHAT_SELF_ROOM_NOT_ALLOWED", "자기 자신과 채팅할 수 없습니다."),
+    CHAT_INVALID_MESSAGE(HttpStatus.BAD_REQUEST, "CHAT_INVALID_MESSAGE", "메시지는 비어 있을 수 없습니다."),
+    CHAT_INVALID_CURSOR(HttpStatus.BAD_REQUEST, "CHAT_INVALID_CURSOR", "유효하지 않은 커서 값입니다."),
+    CHAT_MESSAGE_NOT_IN_ROOM(HttpStatus.BAD_REQUEST, "CHAT_MESSAGE_NOT_IN_ROOM", "해당 채팅방의 메시지가 아닙니다."),
+    CHAT_NOT_PARTICIPANT(HttpStatus.FORBIDDEN, "CHAT_NOT_PARTICIPANT", "해당 채팅방 참여자가 아닙니다."),
+
 
     // 404 NOT FOUND
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "USER_NOT_FOUND", "사용자를 찾을 수 없습니다."),
     PROFILE_NOT_FOUND(HttpStatus.NOT_FOUND, "PROFILE_NOT_FOUND", "프로필을 찾을 수 없습니다."),
+    CHAT_ROOM_NOT_FOUND(HttpStatus.NOT_FOUND, "CHAT_ROOM_NOT_FOUND", "채팅방을 찾을 수 없습니다."),
+
+    CHAT_ROOM_CONFLICT(HttpStatus.CONFLICT, "CHAT_ROOM_CONFLICT", "채팅방 생성 충돌이 발생했습니다."),
 
     // 500 INTERNAL SERVER ERROR
     INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "INTERNAL_ERROR", "서버 오류가 발생했습니다."),

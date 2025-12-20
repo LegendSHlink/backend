@@ -1,17 +1,19 @@
-package org.example.web_service_v2.domain.chat_messages.entity;
+package org.example.web_service_v2.domain.chat.message.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.web_service_v2.domain.chat_rooms.entity.ChatRoom;
+import org.example.web_service_v2.domain.chat.room.entity.ChatRoom;
 import org.example.web_service_v2.domain.profiles.entity.Profile;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "chat_messages")
-@Getter
-@Builder
+@Table(
+        name = "chat_messages",
+        indexes = @Index(name="idx_msg_room_id_id", columnList="chat_room_id, id")
+)
+@Getter@Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ChatMessage {
@@ -32,6 +34,5 @@ public class ChatMessage {
     private String message;
 
     @CreationTimestamp
-    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 }

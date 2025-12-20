@@ -2,8 +2,6 @@ package org.example.web_service_v2.domain.profiles.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.web_service_v2.domain.chat_messages.entity.ChatMessage;
-import org.example.web_service_v2.domain.chat_rooms.entity.ChatRoom;
 import org.example.web_service_v2.domain.field.entity.Field;
 import org.example.web_service_v2.domain.follow.entity.Follow;
 import org.example.web_service_v2.domain.job_post.entity.JobPost;
@@ -67,21 +65,6 @@ public class Profile {
     @OneToMany(mappedBy = "following", cascade = CascadeType.ALL)
     @Builder.Default
     private List<Follow> followers = new ArrayList<>();
-
-    // Profile 1:N ChatRoom (참여자1로 참여한 채팅방)
-    @OneToMany(mappedBy = "profile1", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
-    private List<ChatRoom> chatRoomsAsProfile1 = new ArrayList<>();
-
-    // Profile 1:N ChatRoom (참여자2로 참여한 채팅방)
-    @OneToMany(mappedBy = "profile2", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
-    private List<ChatRoom> chatRoomsAsProfile2 = new ArrayList<>();
-
-    // Profile 1:N ChatMessage
-    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
-    private List<ChatMessage> sentMessages = new ArrayList<>();
 
     public void updateField(Field field) {
         this.field = field;
