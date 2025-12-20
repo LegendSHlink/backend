@@ -39,4 +39,15 @@ public class JobPostDetail {
     @Enumerated(EnumType.STRING)
     @Column(name = "job_status")
     private JobStatus jobStatus;
+
+    // === 비즈니스 로직 ===
+
+    public void updateJobPostDetail(String overview, String qualifications, 
+                                    String conditions, String information, String procedureInfo) {
+        this.overview = overview;
+        this.qualifications = qualifications;
+        this.conditions = conditions;
+        this.information = information;
+        this.procedureInfo = procedureInfo;
+    }
 }
