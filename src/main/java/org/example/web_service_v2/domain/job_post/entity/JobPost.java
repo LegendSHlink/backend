@@ -46,15 +46,16 @@ public class JobPost {
 
     private Integer size;
 
+    @Column(name = "required_experience")
+    private String requiredExperience;  // 요구 경력 (예: "신입", "경력 2년", "경력 3~5년")
+
     // === 연관관계 ===
 
     // JobPost 1:1 JobPostDetail
     @OneToOne(mappedBy = "jobPost", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private JobPostDetail jobPostDetail;
 
-<<<<<<< HEAD
 
-=======
     // === 비즈니스 로직 ===
 
     public void updateJobPost(String description, LocalDateTime endDate, Integer size) {
@@ -62,5 +63,11 @@ public class JobPost {
         this.endDate = endDate;
         this.size = size;
     }
->>>>>>> origin/feat/event
+
+    public void updateJobPost(String description, LocalDateTime endDate, Integer size, String requiredExperience) {
+        this.description = description;
+        this.endDate = endDate;
+        this.size = size;
+        this.requiredExperience = requiredExperience;
+    }
 }

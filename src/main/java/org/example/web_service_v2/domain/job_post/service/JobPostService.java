@@ -125,8 +125,13 @@ public class JobPostService {
             throw new JobPostForbiddenException("수정 권한이 없습니다.");
         }
 
-        // JobPost 업데이트 (엔티티에 업데이트 메서드 추가 필요)
-        jobPost.updateJobPost(request.getDescription(), request.getEndDate(), request.getSize());
+        // JobPost 업데이트
+        jobPost.updateJobPost(
+            request.getDescription(), 
+            request.getEndDate(), 
+            request.getSize(), 
+            request.getRequiredExperience()  // 요구 경력 추가
+        );
 
         // JobPostDetail 업데이트
         JobPostDetail detail = jobPost.getJobPostDetail();
