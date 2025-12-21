@@ -17,6 +17,7 @@ public class JobPostRequestDTO {
         private String description;
         private LocalDateTime endDate;
         private Integer size;
+        private String requiredExperience;  // 요구 경력
         
         // 상세 정보
         private String overview;
@@ -33,6 +34,7 @@ public class JobPostRequestDTO {
         private String description;
         private LocalDateTime endDate;
         private Integer size;
+        private String requiredExperience;  // 요구 경력
         
         // 상세 정보
         private String overview;

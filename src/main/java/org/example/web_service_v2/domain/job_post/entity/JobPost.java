@@ -46,6 +46,9 @@ public class JobPost {
 
     private Integer size;
 
+    @Column(name = "required_experience")
+    private String requiredExperience;  // 요구 경력 (예: "신입", "경력 2년", "경력 3~5년")
+
     // === 연관관계 ===
 
     // JobPost 1:1 JobPostDetail
@@ -58,5 +61,12 @@ public class JobPost {
         this.description = description;
         this.endDate = endDate;
         this.size = size;
+    }
+
+    public void updateJobPost(String description, LocalDateTime endDate, Integer size, String requiredExperience) {
+        this.description = description;
+        this.endDate = endDate;
+        this.size = size;
+        this.requiredExperience = requiredExperience;
     }
 }

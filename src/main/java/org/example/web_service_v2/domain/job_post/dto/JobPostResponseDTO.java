@@ -18,6 +18,7 @@ public class JobPostResponseDTO {
         private String fieldName;
         private String description;
         private Integer size;
+        private String requiredExperience;  // 요구 경력
         private LocalDateTime createdAt;
         private LocalDateTime endDate;
         private JobStatus jobStatus;
@@ -34,6 +35,7 @@ public class JobPostResponseDTO {
         private String fieldName;
         private String description;
         private Integer size;
+        private String requiredExperience;  // 요구 경력
         private LocalDateTime createdAt;
         private LocalDateTime endDate;
         

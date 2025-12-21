@@ -22,6 +22,7 @@ public class JobPostConverter {
                 .fieldName(jobPost.getField().getName())
                 .description(jobPost.getDescription())
                 .size(jobPost.getSize())
+                .requiredExperience(jobPost.getRequiredExperience())  // 요구 경력 추가
                 .createdAt(jobPost.getCreatedAt())
                 .endDate(jobPost.getEndDate())
                 .jobStatus(jobPost.getJobPostDetail() != null ? 
@@ -39,6 +40,7 @@ public class JobPostConverter {
                 .fieldName(jobPost.getField().getName())
                 .description(jobPost.getDescription())
                 .size(jobPost.getSize())
+                .requiredExperience(jobPost.getRequiredExperience())  // 요구 경력 추가
                 .createdAt(jobPost.getCreatedAt())
                 .endDate(jobPost.getEndDate())
                 .overview(detail != null ? detail.getOverview() : null)
@@ -88,6 +90,7 @@ public class JobPostConverter {
                 .description(request.getDescription())
                 .endDate(request.getEndDate())
                 .size(request.getSize())
+                .requiredExperience(request.getRequiredExperience())  // 요구 경력 추가
                 .build();
     }
 
