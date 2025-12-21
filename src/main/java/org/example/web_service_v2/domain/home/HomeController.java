@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class HomeController {
     private final HomeService homeService;
-    private final ArticleService articleService;
 
     @GetMapping
     public ResponseEntity<HomeResponse> home(

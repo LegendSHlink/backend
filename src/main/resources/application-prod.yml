@@ -1,0 +1,45 @@
+server:
+  port: ${SERVER_PORT:8081}
+
+spring:
+  application:
+    name: web_service_v2
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:validate}
+    show-sql: ${JPA_SHOW_SQL:false}
+    properties:
+      hibernate:
+        format_sql: ${JPA_FORMAT_SQL:false}
+        dialect: org.hibernate.dialect.MySQLDialect
+
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-expiration-ms: 1800000
+  refresh-token-expiration-ms: 1209600000
+
+cloud:
+  aws:
+    region: ${AWS_REGION}
+    s3:
+      bucket: ${S3_BUCKET}
+    credentials:
+      access-key: ${AWS_ACCESS_KEY_ID}
+      secret-key: ${AWS_SECRET_ACCESS_KEY}
+
+app:
+  upload:
+    image:
+      max-size-bytes: 5242880
+      allowed-content-types:
+        - image/jpeg
+        - image/png
+        - image/webp
+      verify-image-content: true

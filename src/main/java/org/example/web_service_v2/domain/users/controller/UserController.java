@@ -14,6 +14,9 @@ import org.example.web_service_v2.global.auth.dto.CustomUserDetails;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Tag(name = "Users", description = "내 프로필 조회/수정")
 @RestController
@@ -65,9 +68,7 @@ public class UserController {
     public ResponseEntity<ProfileBasicResponse> getProfile(
             @AuthenticationPrincipal CustomUserDetails principal
     ){
-        Long id = principal.getId();
-
-        ProfileBasicResponse body = profileService.getUserProfile(id);
+        ProfileBasicResponse body = profileService.getUserProfile(principal.getId());
         return ResponseEntity.ok(body);
     }
 
@@ -109,7 +110,26 @@ public class UserController {
             @AuthenticationPrincipal CustomUserDetails principal,
             @RequestBody ProfileUpdateRequest request
     ){
-        ProfileBasicResponse body = profileService.updateUserProfile(principal.getId(), request);
+        ProfileBasicResponse body = profileService.updateUserProfile(principal, request);
+        return ResponseEntity.ok(body);
+    }
+
+    @PostMapping(value = "/me/image", consumes = "multipart/form-data")
+    @Operation(
+            summary = "내 프로필 이미지 업로드",
+            description = "JWT 인증된 사용자의 프로필 이미지를 S3에 업로드하고, DB에 URL을 반영합니다."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "업로드 성공"),
+            @ApiResponse(responseCode = "401", description = "인증 실패"),
+            @ApiResponse(responseCode = "415", description = "Content-Type이 multipart/form-data가 아님")
+    })
+    public ResponseEntity<ProfileBasicResponse> uploadProfileImage(
+            @AuthenticationPrincipal CustomUserDetails principal,
+            @RequestPart("image") MultipartFile image
+            ) throws IOException {
+        System.out.println("넣었다.");
+        ProfileBasicResponse body = profileService.updateProfileImage(principal, image);
         return ResponseEntity.ok(body);
     }
 }

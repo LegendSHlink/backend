@@ -15,6 +15,10 @@ public enum ErrorCode {
     DUPLICATE_EMAIL(HttpStatus.BAD_REQUEST, "DUPLICATE_EMAIL", "이미 존재하는 이메일입니다."),
     TYPE_MISMATCH(HttpStatus.BAD_REQUEST, "TYPE_MISMATCH", "요청 값의 타입이 올바르지 않습니다."),
     INVALID_JSON(HttpStatus.BAD_REQUEST, "INVALID_JSON", "요청 바디가 올바르지 않습니다."),
+    IMAGE_EMPTY(HttpStatus.BAD_REQUEST, "IMAGE_EMPTY", "이미지 파일이 비어있습니다."),
+    IMAGE_TOO_LARGE(HttpStatus.BAD_REQUEST, "IMAGE_TOO_LARGE", "이미지 용량이 너무 큽니다."),
+    IMAGE_INVALID_CONTENT(HttpStatus.BAD_REQUEST, "IMAGE_INVALID_CONTENT", "유효한 이미지 파일이 아닙니다."),
+
 
     // 401 UNAUTHORIZED
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "UNAUTHORIZED", "인증이 필요합니다."),
@@ -40,12 +44,19 @@ public enum ErrorCode {
 
     CHAT_ROOM_CONFLICT(HttpStatus.CONFLICT, "CHAT_ROOM_CONFLICT", "채팅방 생성 충돌이 발생했습니다."),
 
+    IMAGE_UNSUPPORTED_TYPE(
+            HttpStatus.UNSUPPORTED_MEDIA_TYPE,
+            "IMAGE_UNSUPPORTED_TYPE",
+            "허용되지 않는 이미지 형식입니다."
+    ),
     // 500 INTERNAL SERVER ERROR
     INTERNAL_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "INTERNAL_ERROR", "서버 오류가 발생했습니다."),
 
     CANNOT_FOLLOW_SELF(HttpStatus.NOT_ACCEPTABLE, "FOLLOW_400_1", "자기 자신은 팔로우할 수 없습니다."),
     ALREADY_FOLLOWING(HttpStatus.BAD_REQUEST, "FOLLOW_409_1", "이미 팔로우한 사용자입니다."),
-    NOT_FOLLOWING(HttpStatus.BAD_REQUEST, "FOLLOW_409_2", "팔로우 상태가 아닙니다.");
+    NOT_FOLLOWING(HttpStatus.BAD_REQUEST, "FOLLOW_409_2", "팔로우 상태가 아닙니다."),
+    IMAGE_UPLOAD_FAILED(HttpStatus.BAD_REQUEST, "UPLOAD_FAILED", "이미지 업로드 실패했습니다."),
+    VALIDATION_ERROR(HttpStatus.BAD_REQUEST, "VALIDATION_FAILED", "유효한 이미지 형식이 아닙니다.");
     private final HttpStatus status;
     private final String code;
     private final String message;

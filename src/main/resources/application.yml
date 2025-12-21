@@ -1,7 +1,11 @@
-server:
-  port: 8081
+
 
 spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
   application:
     name: web_service_v2
 
@@ -19,7 +23,29 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.MySQLDialect
+  web:
+    error:
+      include-message: always
 
+cloud:
+  aws:
+    region: ${AWS_REGION:ap-northeast-2}
+    s3:
+      bucket: ${S3_BUCKET}
+    credentials:
+      access-key: ${AWS_ACCESS_KEY_ID}
+      secret-key: ${AWS_SECRET_ACCESS_KEY}
+
+
+app:
+  upload:
+    image:
+      max-size-bytes: 5242880
+      allowed-content-types:
+        - image/jpeg
+        - image/png
+        - image/webp
+      verify-image-content: true
 # Swagger (SpringDoc) 설정
 springdoc:
   api-docs:
@@ -32,6 +58,5 @@ springdoc:
   default-produces-media-type: application/json
 
 jwt:
-  secret: "9f3a8c1d7b6e4a2f5d91c0b8e4f7a2d3c6b5e8a9f1d2c4b7e0a6d3c9f5b8e1"
   access-token-expiration-ms: 1800000
   refresh-token-expiration-ms: 1209600000

@@ -31,6 +31,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webmvc'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
+    implementation platform("software.amazon.awssdk:bom:2.25.0")
+    implementation "software.amazon.awssdk:s3"
+
     // Swagger (SpringDoc OpenAPI) - Spring Boot 4.0 호환 버전
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.1'
 

@@ -8,11 +8,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.example.web_service_v2.domain.profiles.dto.basic.ProfileBasicResponse;
+import org.example.web_service_v2.global.auth.dto.CustomUserDetails;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v2/profiles")
@@ -29,7 +28,7 @@ public class ProfileController {
             responseCode = "200",
             description = "조회 성공",
             content = @Content(
-                    schema = @Schema(implementation = ApiResponse.class),
+                    schema = @Schema(implementation = ProfileBasicResponse.class),
                     examples = @ExampleObject(
                             name = "성공 응답",
                             value = """
@@ -78,4 +77,5 @@ public class ProfileController {
         ProfileBasicResponse body = profileService.getUserProfile(profileId);
         return ResponseEntity.ok(body);
     }
+
 }
