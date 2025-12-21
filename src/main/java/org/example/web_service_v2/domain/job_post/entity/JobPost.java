@@ -52,5 +52,15 @@ public class JobPost {
     @OneToOne(mappedBy = "jobPost", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private JobPostDetail jobPostDetail;
 
+<<<<<<< HEAD
 
+=======
+    // === 비즈니스 로직 ===
+
+    public void updateJobPost(String description, LocalDateTime endDate, Integer size) {
+        this.description = description;
+        this.endDate = endDate;
+        this.size = size;
+    }
+>>>>>>> origin/feat/event
 }
