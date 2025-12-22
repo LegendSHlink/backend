@@ -1,14 +1,14 @@
 server:
-  port: 8081
+  port: 
 
 spring:
   application:
     name: shlink
 
   datasource:
-    url: jdbc:mysql://localhost:3306/shlink
+    url: 
     username: root
-    password: leksis6737!
+    password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
