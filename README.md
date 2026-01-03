@@ -53,18 +53,6 @@
   ### 로그인
   POST /v1/auth/login
   
-  **Request**
-  ```json
-  {
-    "email": "user@test.com",
-    "password": "password"
-  }
-
-  **Response**
-  {
-    "accessToken": "jwt-access-token"
-  }```
-  
   ### 게시글 작성
   POST /v2/articles/create
   Authorization: Bearer {accessToken}
