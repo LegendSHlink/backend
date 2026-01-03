@@ -17,7 +17,7 @@
 
   특히, 단순 CRUD 제공을 넘어 인증 상태에 따라 기능이 제어되는 구조를 안정적으로 구현하는 것이 중요했습니다.
 
-  ## 2. 전체 시스템 구조
+## 2. 전체 시스템 구조
 
   - Frontend: React
   - Backend: Spring Boot 기반 REST API
@@ -27,7 +27,7 @@
     프론트엔드와 백엔드는 명확히 분리된 구조로 설계되었으며,
     백엔드는 인증/인가 및 비즈니스 로직에 집중하도록 구성했습니다.
 
-  ## 3. 핵심 기능 및 동작 흐름
+## 3. 핵심 기능 및 동작 흐름
 
   ### 사용자 인증 흐름
 
@@ -53,17 +53,17 @@
   ### 로그인
   POST /v1/auth/login
   
-**Request**
-```json
-{
-  "email": "user@test.com",
-  "password": "password"
-}
+  **Request**
+  ```json
+  {
+    "email": "user@test.com",
+    "password": "password"
+  }
 
-**Response**
-{
-  "accessToken": "jwt-access-token"
-}
+  **Response**
+  {
+    "accessToken": "jwt-access-token"
+  }```
   
   ### 게시글 작성
   POST /v2/articles/create
@@ -76,7 +76,7 @@
   ### 게시글 조회
   GET /articles
 
-  ## 6. 협업 환경에서의 역할과 기여
+## 6. 협업 환경에서의 역할과 기여
   본 프로젝트는 프론트엔드와 백엔드가 분리된 팀 프로젝트였으며,
   저는 다음 영역을 중심으로 기여했습니다.
   * 백엔드 API 구조 설계
@@ -85,7 +85,7 @@
   * 프론트엔드 연동을 고려한 요청/응답 규격 정의
   * 인증 실패 및 예외 상황 처리
 
-  ## 7. 기술 스택
+## 7. 기술 스택
   * Java
   * Spring Boot
   * Spring Security
@@ -93,7 +93,7 @@
   * JPA
   * MySQL
 
-  ## 8. 프로젝트를 통해 배운 점
+## 8. 프로젝트를 통해 배운 점
   이 프로젝트를 통해,
   단순히 기능을 구현하는 것을 넘어
   팀 환경에서 백엔드가 어떤 책임을 가져야 하는지를 체감할 수 있었습니다.
